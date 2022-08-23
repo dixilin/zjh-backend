@@ -1,10 +1,25 @@
 {
+  "scripts": {
+    "start:watch": "nodemon main.js",
+    "start": "node main.js"
+  },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-jwt": "^4.0.3",
+    "koa-router": "^11.0.1",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.4.4",
+    "socket.io": "^4.5.1"
   },
   "name": "zjh-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./main.js",
   "author": "dicky",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "koa-bodyparser": "^4.3.0"
+  }
 }
