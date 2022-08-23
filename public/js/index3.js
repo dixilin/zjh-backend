@@ -1,1 +1,0 @@
-import{R as e,c as t}from"./index.js";const n=undefined;var o=n=>o=>{const r=undefined;return localStorage.getItem("zjh_token")?e.createElement(n,{...o}):e.createElement(t,{to:"/login"})};export{o as A};

@@ -89,11 +89,13 @@ function ioListen(io) {
           (item) => item.username === username
         );
         const { idx } = getIndex({ id: item.roomId });
-        item.roomId &&
+        if (item.roomId) {
           socket.emit("backToRoom", {
             id: item.roomId,
             roomInfo: infoData.publicRooms[idx],
           });
+          socket.join(item.roomId);
+        }
       }
     });
 
@@ -176,6 +178,7 @@ function ioListen(io) {
 
     socket.on("destroyRoom", ({ id }) => {
       const idx = infoData.publicRooms.findIndex((item) => item.id === id);
+      console.log("destroy", id, idx, infoData.publicRooms);
       infoData.onlineUsers.forEach((item, index) => {
         infoData.publicRooms[idx].user.forEach(({ name }) => {
           if (item.username === name) {
@@ -185,6 +188,7 @@ function ioListen(io) {
       });
 
       infoData.publicRooms.splice(idx, 1);
+      console.log("after...", infoData.publicRooms, infoData.onlineUsers);
       socket.server.in(id).emit("leaveRoom");
       io.socketsLeave(id);
     });
